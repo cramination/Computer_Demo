@@ -5,3 +5,9 @@ html, body {
   height: 100%;
   overflow: hidden; /* 🚀 hides scrollbars */
 }
+
+canvas {
+  display: block;     /* removes inline-gap/scroll */
+  width: 100vw;       /* force full width */
+  height: 100vh;      /* force full height */
+}
