@@ -74,6 +74,7 @@ const texture1 = setupVideo("film");
 const texture2 = setupVideo("film3");
 const texture3 = setupVideo("film4");
 const texture4 = setupVideo("film5");
+const texture5 = setupVideo("film6");
 
 // Cylinder 1
 const cylinder1 = new THREE.Mesh(
@@ -139,13 +140,13 @@ if (texture4) texture4.repeat.set(0.6, 0.6);
 scene.add(cube1);
 
 // Box 2
-const boxMaterials2 = [texture4, texture4, texture3, texture3, texture4, texture4].map(
+const boxMaterials2 = [texture5, texture5, texture3, texture3, texture5, texture5].map(
   tex => new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide, toneMapped: false })
 );
 const cube2 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), boxMaterials2);
 cube2.position.set(1.262, 0.69, 3.465);
 cube2.scale.set(0.029, 0.35, 0.029);
-if (texture4) texture4.offset.set(0.52, 0.52);
+if (texture5) texture5.offset.set(0.52, 0.52);
 scene.add(cube2);
 
 // Plane
