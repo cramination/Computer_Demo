@@ -7,7 +7,7 @@ export default defineConfig({
         gltf() 
       ],
       assetsInclude: ['public/assets/Computer-case-compressed.gltf'],
-      base: "/comp-5/",
+      base: "/Computer_Demo/",
       server: {
 
         port: 5137 // Change this to your desired port
