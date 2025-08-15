@@ -162,6 +162,18 @@ loader.load(
   (error) => console.error('An error occurred:', error)
 );
 
+function unlockVideos() {
+  ["film", "film3", "film4", "film5"].forEach(id => {
+    const v = document.getElementById(id);
+    if (v) {
+      v.play().catch(err => console.warn(`Manual play failed for ${id}:`, err));
+    }
+  });
+  window.removeEventListener("click", unlockVideos);
+}
+window.addEventListener("click", unlockVideos);
+
+
 // Animation loop
 function animate() {
   controls.update();
