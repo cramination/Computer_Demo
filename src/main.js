@@ -42,6 +42,7 @@ window.addEventListener('resize', onWindowResize);
 onWindowResize();
 
 // Video setup helper
+// Video setup helper
 function setupVideo(id) {
   const video = document.getElementById(id);
   if (video) {
@@ -50,15 +51,23 @@ function setupVideo(id) {
     video.playsInline = true;
     video.autoplay = true;
 
-    // Some browsers require explicit play
-    video.play().catch((err) => {
-      console.warn(`Failed to autoplay video ${id}:`, err);
+    // Try autoplay immediately
+    video.play().catch(() => {
+      // Autoplay failed, wait for gesture
+      const unlock = () => {
+        video.play().catch(err => console.warn(`Manual play failed for ${id}:`, err));
+        document.body.removeEventListener("click", unlock);
+        document.body.removeEventListener("touchstart", unlock);
+      };
+      document.body.addEventListener("click", unlock);
+      document.body.addEventListener("touchstart", unlock);
     });
 
     return new THREE.VideoTexture(video);
   }
   return null;
 }
+
 
 // video textures
 const texture1 = setupVideo("film");
